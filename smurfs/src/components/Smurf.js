@@ -2,27 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 import { addSmurf, removeSmurf } from "../actions/SmurfActions";
 
+import { fetchSmurf } from "../actions";
+
 const Smurf = props => {
   //   handleChanges = e => {
   //     e.preventDefault();
   //   };
 
-  //   handleSubmit = e => {
-  //     e.preventDefault();
-  //     // props.addSmurf()
-  //   };
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
-  const add = smurf => {
+  const addSmurfs = smurf => {
     props.addSmurf(smurf);
   };
 
-  const remove = smurf => {
+  const removeSmurfs = smurf => {
     props.removeSmurf(smurf);
   };
 
   return (
     <form
-    // onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
+      onClick={handleSubmit}
     >
       <div>
         {!props.smurf && <h2>Add a new Smurf!</h2>}
@@ -48,8 +50,8 @@ const Smurf = props => {
 
           //   onChange={handleChanges}
         />
-        <button add={add}>Add Smurf</button>
-        <button remove={remove}>Remove Smurf</button>
+        <button onClick={props.fetchSmurf}>Add Smurf</button>
+        <button>Remove Smurf</button>
       </div>
     </form>
   );
@@ -61,4 +63,4 @@ const mapStateToProps = state => ({
   errorOnProps: state.error
 });
 
-export default connect(mapStateToProps, { addSmurf, removeSmurf })(Smurf);
+export default connect(mapStateToProps, { fetchSmurf })(Smurf);

@@ -15,23 +15,23 @@ export const initialState = {
 
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCHING_SMURF_START:
-    //   return {
-    //     ...state,
-    //     isLoading: true
-    //   };
-    // case FETCHING_SMURF_SUCCESS:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     smurf: action.payload
-    //   };
-    // case FETCHING_SMURF_FAILURE:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     error: action.payload.error
-    //   };
+    case "FETCHING_SMURF_START":
+      return {
+        ...state,
+        isLoading: true
+      };
+    case "FETCHING_SMURF_SUCCESS":
+      return {
+        ...state,
+        isLoading: false,
+        smurf: action.payload
+      };
+    case "FETCHING_SMURF_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      };
     case ADD_SMURF:
       return {
         ...state,
