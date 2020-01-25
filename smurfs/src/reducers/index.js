@@ -2,14 +2,7 @@ import { ADD_SMURF, REMOVE_SMURF } from "../actions/SmurfActions";
 
 export const initialState = {
   isLoading: false,
-  smurfs: [
-    {
-      name: " ",
-      age: [],
-      height: " ",
-      id: 0
-    }
-  ],
+  smurfs: [{}],
   error: ""
 };
 
