@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addSmurf } from "../actions/SmurfActions";
+import { addSmurf } from "../actions";
 
 export const SmurfForm = props => {
   const [state, setState] = useState({
@@ -22,7 +22,9 @@ export const SmurfForm = props => {
   const handleChanges = e => {
     setState({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      [e.target.age]: e.target.value,
+      [e.target.height]: e.target.value
     });
     console.log(e.target.value);
   };

@@ -25,23 +25,32 @@ export const smurfReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload.error
       };
-    // case "ADDING_SMURF":
-    //   return {
-    //     ...state,
-    //     [e.target.value]: e.target.value
-    //   };
-    case ADD_SMURF:
+
+    case "ADDING_SMURF_START":
       return {
         ...state,
-        smurfs: action.payload
+        isLoading: true
       };
 
-    case REMOVE_SMURF:
+    case "ADDING_SMURF_SUCCESS":
       return {
         ...state,
-        // following same logic as car-sales project
-        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id)
+        isLoading: false,
+        smurfs: action.payload
       };
+    case "ADDING_SMURF_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      };
+
+    // case REMOVE_SMURF:
+    //   return {
+    //     ...state,
+    //     // following same logic as car-sales project
+    //     smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id)
+    //   };
 
     default:
       return state;
