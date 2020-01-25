@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addSmurf, removeSmurf } from "../actions/SmurfActions";
+import { SmurfList } from "./SmurfList";
 
 import { fetchSmurf } from "../actions";
 
 const Smurf = props => {
-  //   handleChanges = e => {
+  //   const handleChanges = e => {
   //     e.preventDefault();
   //   };
 
@@ -23,36 +24,46 @@ const Smurf = props => {
 
   return (
     <form
-      // onSubmit={handleSubmit}
-      onClick={handleSubmit}
+      onSubmit={handleSubmit}
+      //   onClick={handleSubmit}
     >
       <div>
-        {!props.smurf && <h2>Add a new Smurf!</h2>}
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={props.name}
-          //   onChange={handleChanges}
-        />
-        <input
-          type="text"
-          name="age"
-          placeholder="Age"
-          value={props.age}
-          //   onChange={handleChanges}
-        />
+        {!props.smurfs && <h2>Add a new Smurf!</h2>}
+        <button onClick={props.fetchSmurf}>Get Smurfs</button>
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            // value={props.name}
+            // onChange={handleChanges}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="age"
+            placeholder="Age"
+            // value={props.age}
+            // onChange={handleChanges}
+          />
+        </div>
         <input
           type="text"
           name="height"
           placeholder="Height"
-          value={props.height}
+          //   value={props.smurfsOnProps}
 
           //   onChange={handleChanges}
         />
-        <button onClick={props.fetchSmurf}>Add Smurf</button>
-        <button>Remove Smurf</button>
+
+        <div>
+          <button onClick={addSmurfs}>Add</button>
+        </div>
+        <button onClick={removeSmurfs}>Remove</button>
       </div>
+      <SmurfList smurfs={props.smurfsOnProps} />
+      <h2>{}</h2>
     </form>
   );
 };

@@ -4,9 +4,9 @@ export const initialState = {
   isLoading: false,
   smurfs: [
     {
-      name: "Brainey",
-      age: 200,
-      height: "5cm",
+      name: " ",
+      age: [],
+      height: " ",
       id: 0
     }
   ],
@@ -24,7 +24,7 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        smurf: action.payload
+        smurfs: action.payload
       };
     case "FETCHING_SMURF_FAILURE":
       return {
@@ -32,19 +32,22 @@ export const smurfReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload.error
       };
+    // case "ADDING_SMURF":
+    //   return {
+    //     ...state,
+    //     [e.target.value]: e.target.value
+    //   };
     case ADD_SMURF:
       return {
         ...state,
-        smurf: action.payload
+        smurfs: action.payload
       };
 
     case REMOVE_SMURF:
       return {
-        ...state
+        ...state,
         // following same logic as car-sales project
-        // features: state.car.features.filter(
-        //     item => item.id !== action.payload.id
-        //   )
+        smurfs: state.smurfs.filter(smurf => smurf.id !== action.payload.id)
       };
 
     default:
