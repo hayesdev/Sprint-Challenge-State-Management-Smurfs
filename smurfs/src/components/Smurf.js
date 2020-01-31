@@ -3,16 +3,17 @@ import { connect } from "react-redux";
 
 import { SmurfList } from "./SmurfList";
 import { SmurfForm } from "./SmurfForm";
-import { fetchSmurf } from "../actions";
+import { fetchSmurf, addSmurf } from "../actions";
 
 const Smurf = props => {
   return (
     <div>
       <h2>Add a new Smurf!</h2>
-      <button onClick={props.fetchSmurf}>Get Smurfs</button>
-      <SmurfForm />
+      <button className="btn" onClick={props.fetchSmurf}>
+        Get Smurfs
+      </button>
+      <SmurfForm addSmurf={addSmurf} smurfs={props.smurfsOnProps} />
       <SmurfList smurfs={props.smurfsOnProps} />
-      <h2>{}</h2>
     </div>
   );
 };
@@ -23,4 +24,4 @@ const mapStateToProps = state => ({
   errorOnProps: state.error
 });
 
-export default connect(mapStateToProps, { fetchSmurf })(Smurf);
+export default connect(mapStateToProps, { fetchSmurf, addSmurf })(Smurf);

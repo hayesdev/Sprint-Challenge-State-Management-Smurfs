@@ -3,7 +3,7 @@ import { NewSmurf } from "./NewSmurf";
 
 export const SmurfList = props => {
   return (
-    <div>
+    <div className="smurf-list">
       {props.smurfs.map(smurf => (
         <NewSmurf
           key={smurf.id}

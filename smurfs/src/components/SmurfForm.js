@@ -4,34 +4,32 @@ import { connect } from "react-redux";
 import { addSmurf } from "../actions";
 
 export const SmurfForm = props => {
-  const [state, setState] = useState({
-    name: "",
-    age: "",
-    height: "",
-    id: Date.now()
-  });
+  const [state, setState] = useState([
+    {
+      name: "",
+      age: "",
+      height: "",
+      id: Date.now()
+    }
+  ]);
 
-  //   const addSmurfs = smurf => {
-  //     props.addSmurf(smurf);
-  //   };
-
-  //   const removeSmurfs = smurf => {
-  //     props.removeSmurf(smurf);
-  //   };
+  // const addSmurf = { addSmurf };
+  // const addSmurf = smurf => {
+  //   props.addSmurf(smurf);
+  // };
 
   const handleChanges = e => {
     setState({
       ...state,
-      [e.target.name]: e.target.value,
-      [e.target.age]: e.target.value,
-      [e.target.height]: e.target.value
+      [e.target.name]: e.target.value
     });
-    console.log(e.target.value);
+    // console.log(state);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.addSmurf(state);
+    console.log(props.smurfs);
+    props.addSmurf();
   };
 
   return (
@@ -42,6 +40,7 @@ export const SmurfForm = props => {
             type="text"
             name="name"
             placeholder="Name"
+            // value={state.name}
             onChange={handleChanges}
           />
         </div>
@@ -50,6 +49,7 @@ export const SmurfForm = props => {
             type="text"
             name="age"
             placeholder="Age"
+            // value={state.age}
             onChange={handleChanges}
           />
         </div>
@@ -57,13 +57,13 @@ export const SmurfForm = props => {
           type="text"
           name="height"
           placeholder="Height"
+          // value={state.height}
           onChange={handleChanges}
         />
 
         <div>
-          <button>Add Smurf</button>
+          <button className="btn">Add Smurf</button>
         </div>
-        {/* <button onClick={removeSmurfs}>Remove</button> */}
       </div>
     </form>
   );
@@ -75,4 +75,10 @@ const mapStateToProps = state => {
   };
 };
 
+// {
+//     name: state.name,
+//     age: state.age,
+//     height: state.height,
+//     id: state.id
+//   }
 export default connect(mapStateToProps, { addSmurf })(SmurfForm);

@@ -1,5 +1,37 @@
 .App {
+  height: 100vh;
   text-align: center;
+  color: white;
+  background-color: navy;
+  font-family: "Gochi Hand", cursive;
+}
+
+.smurf-list {
+  display: flex;
+  justify-content: center;
+}
+
+.smurf-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: space-evenly; */
+  height: 100px;
+  width: 220px;
+  margin: 10px 0 10px 0;
+  padding: 5px 0 5px 0;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+}
+
+.smurf-card p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.btn {
+  margin: 3px;
+  border-radius: 5px;
 }
 
 .App-logo {
@@ -20,9 +52,4 @@
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

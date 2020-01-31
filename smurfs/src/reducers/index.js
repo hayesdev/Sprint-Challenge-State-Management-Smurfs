@@ -1,8 +1,8 @@
-import { ADD_SMURF, REMOVE_SMURF } from "../actions/SmurfActions";
-
 export const initialState = {
   isLoading: false,
-  smurfs: [{}],
+  // as [{}] this was still rendering nam,age,height
+  // changing to empty array fixed it to display nothing on page load
+  smurfs: [],
   error: ""
 };
 
@@ -36,7 +36,7 @@ export const smurfReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        smurfs: action.payload
+        smurfs: [...state.smurfs, action.payload]
       };
     case "ADDING_SMURF_FAILURE":
       return {
